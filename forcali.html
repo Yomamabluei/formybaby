@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>For My Love</title>
+    <style>
+        body {
+            background: linear-gradient(135deg, #f8fafc 0%, #e0e7ef 100%);
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe Script', 'Comic Sans MS', cursive, Arial, sans-serif;
+            overflow-x: hidden;
+            position: relative;
+        }
+        .bg-decor {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.25;
+            animation: glow-move 12s linear infinite alternate;
+        }
+        .glow1 { width: 320px; height: 320px; background: #f8bbd0; top: 10%; left: 5%; animation-delay: 0s;}
+        .glow2 { width: 220px; height: 220px; background: #ba68c8; top: 60%; left: 70%; animation-delay: 2s;}
+        .glow3 { width: 180px; height: 180px; background: #90caf9; top: 70%; left: 15%; animation-delay: 4s;}
+        @keyframes glow-move {
+            0% { transform: scale(1) translateY(0);}
+            100% { transform: scale(1.1) translateY(30px);}
+        }
+        .sparkle {
+            position: absolute;
+            width: 8px; height: 8px;
+            background: #fffbe9;
+            border-radius: 50%;
+            opacity: 0.7;
+            box-shadow: 0 0 12px 4px #fffbe9;
+            animation: sparkle-move 6s linear infinite;
+        }
+        .sparkle1 { top: 20%; left: 60%; animation-delay: 0s;}
+        .sparkle2 { top: 80%; left: 30%; animation-delay: 2s;}
+        .sparkle3 { top: 50%; left: 80%; animation-delay: 4s;}
+        .sparkle4 { top: 35%; left: 25%; animation-delay: 1s;}
+        .sparkle5 { top: 65%; left: 55%; animation-delay: 3s;}
+        @keyframes sparkle-move {
+            0% { opacity: 0.7; transform: scale(1);}
+            50% { opacity: 1; transform: scale(1.5);}
+            100% { opacity: 0.7; transform: scale(1);}
+        }
+        .hearts-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .heart {
+            position: absolute;
+            width: 32px; height: 32px;
+            background: #f8bbd0;
+            left: 0;
+            top: 0;
+            opacity: 0.7;
+            transform: scale(1) rotate(-45deg);
+            animation: floatHearts 8s linear infinite, fadeInHeart 1.2s;
+            box-shadow: 0 2px 8px #f8bbd0a0;
+            transition: filter 0.3s;
+        }
+        .heart:before,
+        .heart:after {
+            content: "";
+            position: absolute;
+            width: 32px; height: 32px;
+            background: #f8bbd0;
+            border-radius: 50%;
+        }
+        .heart:before {
+            top: -16px; left: 0;
+        }
+        .heart:after {
+            left: 16px; top: 0;
+        }
+        @keyframes floatHearts {
+            0% {
+                transform: translateY(100vh) scale(1) rotate(-45deg);
+                opacity: 0.7;
+            }
+            80% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-10vh) scale(1.2) rotate(-45deg);
+                opacity: 0;
+            }
+        }
+        @keyframes fadeInHeart {
+            from { opacity: 0; }
+            to { opacity: 0.7; }
+        }
+        .container {
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+            background: rgba(255,255,255,0.92);
+            border-radius: 24px;
+            padding: 40px 32px 32px 32px;
+            margin: 64px auto 32px auto;
+            max-width: 480px;
+            backdrop-filter: blur(6px);
+            transition: box-shadow 0.3s, transform 0.3s;
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            animation: fadeIn 1.2s;
+        }
+        .container:hover {
+            box-shadow: 0 16px 48px rgba(220, 78, 65, 0.13);
+            transform: scale(1.01);
+        }
+        .big-heart {
+            font-size: 4em;
+            color: #ec407a;
+            animation: pulse 1.5s infinite;
+            margin-bottom: 18px;
+            filter: drop-shadow(0 2px 12px #ec407a55);
+            transition: filter 0.3s;
+        }
+        .big-heart:hover {
+            filter: drop-shadow(0 4px 24px #ec407a99);
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1);}
+            50% { transform: scale(1.15);}
+        }
+        .letter {
+            font-size: 1.25em;
+            color: #7b1fa2;
+            margin: 0 auto 32px auto;
+            max-width: 95%;
+            min-height: 120px;
+            white-space: pre-line;
+            text-align: left;
+            border-radius: 12px;
+            background: rgba(248,187,208,0.08);
+            padding: 24px 18px;
+            box-shadow: 0 2px 12px #f8bbd033;
+            border-left: 4px solid #ec407a;
+            animation: fadeIn 1.2s;
+        }
+        .signature {
+            margin-top: 24px;
+            font-size: 1.1em;
+            color: #ec407a;
+            font-family: 'Segoe Script', 'Comic Sans MS', cursive;
+            text-align: right;
+            animation: fadeIn 2s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .typewriter {
+            overflow: hidden;
+            border-right: .15em solid #ec407a;
+            margin: 0 auto;
+            letter-spacing: .03em;
+            animation: blink-caret .75s step-end infinite;
+            min-height: 120px;
+            display: inline-block;
+            width: 100%;
+            box-sizing: border-box;
+            word-break: break-word;
+        }
+        .typewriter.finished {
+            border-right: none;
+            animation: none;
+        }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: #ec407a; }
+        }
+        @media (max-width: 600px) {
+            .container { padding: 18px 4vw; }
+            .letter { font-size: 1em; padding: 16px 6px;}
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-decor">
+        <div class="glow glow1"></div>
+        <div class="glow glow2"></div>
+        <div class="glow glow3"></div>
+        <div class="sparkle sparkle1"></div>
+        <div class="sparkle sparkle2"></div>
+        <div class="sparkle sparkle3"></div>
+        <div class="sparkle sparkle4"></div>
+        <div class="sparkle sparkle5"></div>
+    </div>
+    <div class="hearts-bg"></div>
+    <div class="container">
+        <div class="big-heart">&#10084;&#65039;</div>
+        <div class="letter">
+            <span id="typewriter" class="typewriter"></span>
+        </div>
+        <div class="signature">
+            From the one and only,<br>
+            <span style="font-size:1.3em;">Czar your baby</span>
+        </div>
+    </div>
+    <script>
+        // Floating hearts animation
+        function randomBetween(a, b) {
+            return a + Math.random() * (b - a);
+        }
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = `${randomBetween(0, 100)}vw`;
+            heart.style.animationDuration = `${randomBetween(6, 12)}s`;
+            heart.style.opacity = randomBetween(0.4, 0.8);
+            heart.style.background = `hsl(${randomBetween(340, 360)}, 80%, 80%)`;
+            heart.style.transform = `scale(${randomBetween(0.7, 1.3)}) rotate(-45deg)`;
+            document.querySelector('.hearts-bg').appendChild(heart);
+            setTimeout(() => heart.remove(), 12000);
+        }
+        setInterval(createHeart, 700);
+        for (let i = 0; i < 14; i++) createHeart();
+
+        // Typewriter effect for the letter
+        const letter = `My Dearest Misis Cali,
+
+I’m really sorry for not checking in on you these past hours. Well, I fell asleep unexpectedly. I didn’t mean to leave you without a message or make you feel alone, especially when you’re not feeling well.
+
+Please know that even while I was asleep, you were on my mind constantly. I care about you so much, and it hurts me to know you’ve been sick and upset. I wish I could have been there to take care of you and keep you company.
+
+I promise to be more mindful and keep in touch, especially when you need me the most. You deserve all the love and support in the world, and I want to be the one giving that to you every day.
+
+Please forgive me for not reaching out sooner. I hope you can feel my love through this message and know that I’m here for you—now and always.
+
+Get well soon, my love. I’m sending you all my warmth and hugs i love youuuuuuuuuuuuuuuuuu.`;
+        const typewriter = document.getElementById('typewriter');
+        let i = 0;
+        function type() {
+            if (i < letter.length) {
+                typewriter.textContent += letter.charAt(i);
+                i++;
+                setTimeout(type, 35);
+            } else {
+                typewriter.classList.add('finished');
+            }
+        }
+        type();
+    </script>
+</body>
+</html>
